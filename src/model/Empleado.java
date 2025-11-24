@@ -71,6 +71,7 @@ public class Empleado extends Persona {
                 "Departamento: " + (departamento != null ? departamento : "N/A") + "\n" +
                 "Sueldo: $" + String.format("%,.0f", sueldo) + " | Ingreso: " +
                 (fechaIngreso != null ? fechaIngreso : "N/A") + "\n" +
-                "Dirección: " + (getDireccion() != null ? getDireccion() : "N/A");
+                "Dirección: " + (getDireccion() != null ? getDireccion() : "N/A") + "\n" +
+                "Correo: " + (getEmail() != null ? getEmail() : "N/A");
     }
 }

@@ -34,7 +34,7 @@ public class Main {
                 "Nat", "Fox",
                 LocalDate.of(2004, 9, 13),
                 new Direccion("Av. Siempre viva","341","Puerto Montt","Los Lagos","Chile","7654321"),
-                "natfox@salmontt.cl",
+                "natfox666@salmontt.cl",
                 "+56 9 1111 2222",
                 "59000",
                 "Asistente de contabilidad",

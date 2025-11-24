@@ -66,9 +66,11 @@ public class Empleado extends Persona {
     @Override
     public String toString() {
         return  "ID: " + (idEmpleado != null ? idEmpleado : "N/A") + " | Nombre: " + getNombreCompleto() + "\n" +
+                "Rut: " + (getRut() != null ? getRut() : "N/A") + "\n" +
                 "Cargo: " + (cargo != null ? cargo : "N/A") + "\n" +
                 "Departamento: " + (departamento != null ? departamento : "N/A") + "\n" +
                 "Sueldo: $" + String.format("%,.0f", sueldo) + " | Ingreso: " +
-                (fechaIngreso != null ? fechaIngreso : "N/A");
+                (fechaIngreso != null ? fechaIngreso : "N/A") + "\n" +
+                "Dirección: " + (getDireccion() != null ? getDireccion() : "N/A");
     }
 }

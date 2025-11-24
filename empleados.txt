@@ -1,5 +1,4 @@
-ID       Nombre          Apellido        Cargo                          Sueldo       Ingreso        
----------------------------------------------------------------------------------------------
-59000    Nat             Fox             Asistente de contabilidad      1200000      2024-10-11     
-69000    Nathaniel       Trafalgar       Diseno de Marketing            1800000      2023-06-11     
-66600    Hige            Tucanazo        Director de RRHH               1500000      2022-04-24     
+RUT;Nombre;Apellido;Calle;Numero;Ciudad;Region;Pais;CP;Cargo;Departamento;Sueldo;FechaIngreso;Email;Telefono;ID
+20.384.892-1;Nat;Fox;Av. Siempre viva;341;Puerto Montt;Los Lagos;Chile;7654321;Asistente de contabilidad;Contabilidad;1500000;2024-10-11;natfox@salmontt.cl;+56 9 1111 2222;59000
+20.236.254-1;Nathaniel;Trafalgar;Av Manuel montt;456;Puerto Montt;Los Lagos;Chile;1234567;Diseno de Marketing;Marketing;1800000;2023-06-11;Nathanieltrafalgar@salmontt.cl;+56 9 1753 5674;69000
+20.452.467-1;Hige;Tucanazo;Av. Los Alerces;123;Puerto Montt;Los Lagos;Chile;1234567;Director de RRHH;RRHH;1500000;2022-04-24;higetucanazo@salmontt.cl;+56 9 4532 5678;66600

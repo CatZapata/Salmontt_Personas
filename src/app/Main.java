@@ -3,6 +3,7 @@ package app;
 import model.*;
 import service.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,39 +12,69 @@ public class Main {
         System.out.println("         SISTEMA SALMONTT");
         System.out.println("========================================\u001B[0m\n");
 
-        // Crear gestor que maneja la colección de empleados
+        String archivo = "empleados.txt";
         GestorEmpleados gestor = new GestorEmpleados();
 
-        Direccion dir1 = new Direccion("Av. Los Alerces","123", "Puerto Montt", "Los Lagos", "Chile", "1234567");
-        Empleado e1 = new Empleado("20.384.892-1","Nat", "Fox",LocalDate.of(2004, 9, 13), dir1, "NatFox@salmontt.cl",
-                "+56 9 6545 4568", "59000", "Asistente de contabilidad", "Contabilidad", 1200000, LocalDate.of(2024, 10, 11));
-        Direccion dir2 = new Direccion("Av Manuel montt","456", "Puerto Montt", "Los Lagos", "Chile", "1234567");
-        Empleado e2 = new Empleado("20.236.254-1","Nathaniel", "Trafalgar",LocalDate.of(2001, 3, 30), dir2, "Nathanieltrafalgar@salmontt.cl",
-                "+56 9 1753 5674", "69000", "Diseno de Marketing", "Marketing", 1800000, LocalDate.of(2023, 6, 11));
-        Direccion dir3 = new Direccion("Av. Los Alerces","123", "Puerto Montt", "Los Lagos", "Chile", "1234567");
-        Empleado e3 = new Empleado("20.452.467-1","Hige", "Tucanazo",LocalDate.of(1992, 8, 9), dir3, "higetucanazo@salmontt.cl",
-                "+56 9 4532 5678", "66600", "Director de RRHH", "RRHH", 1500000, LocalDate.of(2022, 4, 24));
+        // Cargar empleados desde el archivo
+        System.out.println("--- Cargando base de datos ---");
+        gestor.cargarDesdeArchivo(archivo);
 
-        // Para agregar empleados al gestor
-        gestor.agregarEmpleado(e1);
-        gestor.agregarEmpleado(e2);
-        gestor.agregarEmpleado(e3);
-
-        // Guardar empleados en el archivo txt
-        gestor.guardarEnArchivo("empleados.txt");
-
-        // Mostras los empleados agregados
-        System.out.println("=== EMPLEADOS CREADOS EN MEMORIA ===");
+        // Mostrar todos los empleados actuales
+        System.out.println("=== LISTA DE EMPLEADOS CARGADOS ===");
         gestor.mostrarEmpleados();
 
-        // cargar los empleados desde el archivo .txt (empleados.txt)
-        gestor.cargarDesdeArchivo("empleados.txt");
-        System.out.printf("\u001B[33m===================================================\u001B[0m\n");
-        System.out.printf("\u001B[33mDatos repetidos en el archivo,\nSaltar esta parte.\u001B[0m\n");
-        System.out.printf("\u001B[33m===================================================\u001B[0m\n\n");
+        // Lista de empleados nuevos o actualizaciones
+        ArrayList<Empleado> cambios = new ArrayList<>();
 
-        System.out.println("=== EMPLEADOS DESDE ARCHIVO ===");
+        // Actualizar y agregar nuevos empleados
+         // ** La menera correcta de usar este apartado es con el RUT, si usas un RUT ya existente entonces se actualizara, si usas uno diferente, se creara un nuevo trabajador
+         // Puedes hacerlo de dos en dos
+        cambios.add(new Empleado(
+                "20.384.892-1",             // RUT del empleado a actualizar IMPORTANTE POR QUE USA EL RUT PARA VERIFICAR EL EMPLEADO
+                "Nat", "Fox",
+                LocalDate.of(2004, 9, 13),
+                new Direccion("Av. Siempre viva","341","Puerto Montt","Los Lagos","Chile","7654321"),
+                "natfox@salmontt.cl",
+                "+56 9 1111 2222",
+                "59000",
+                "Asistente de contabilidad",
+                "Contabilidad",
+                1500000,
+                LocalDate.of(2024,10,11)
+        ));
+
+        cambios.add(new Empleado(
+                "20.349.848-8",             // Para nuevo empleado recuerda usar un RUT diferente
+                "Juan", "Perez",
+                LocalDate.of(1994, 3, 23),
+                new Direccion("Calle nueva vida","939","Puerto Montt","Los Lagos","Chile","7654321"),
+                "JuanPerez@salmontt.cl",
+                "+56 9 9342 8458",
+                "12000",
+                "Practicante",
+                "Marketing",
+                500000,
+                LocalDate.of(2025,4,23)
+        ));
+
+        // Aplicar cambios: actualizar si existe, agregar si no
+        for (Empleado emp : cambios) {
+            if (gestor.existeEmpleado(emp.getRut())) {
+                gestor.actualizarEmpleado(emp.getRut(), emp);
+                System.out.println("\u001B[31mEMPLEADO ACTUALIZADO: " + emp.getRut() + "\u001B[0m\n"); // rojo
+            } else {
+                gestor.agregarEmpleado(emp);
+                System.out.println("\u001B[33mEMPLEADO AGREGADO: " + emp.getRut() + "\u001B[0m\n"); // amarillo
+            }
+        }
+
+        // Guardar todos los cambios en el archivo
+        gestor.guardarEnArchivo(archivo);
+
+        // Mostrar lista final de empleados
+        System.out.println("\u001B[36m========================================");
+        System.out.println("         LISTA FINAL DE EMPLEADOS");
+        System.out.println("========================================\u001B[0m\n");
         gestor.mostrarEmpleados();
-
     }
 }

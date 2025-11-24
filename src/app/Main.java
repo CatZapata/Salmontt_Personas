@@ -1,12 +1,17 @@
 package app;
 
-import model.Direccion;
-import model.Empleado;
-
+import model.*;
+import service.*;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
+
+        System.out.println("=== SISTEMA SALMONTT ===\n");
+
+        // Crear gestor que maneja la colección de empleados
+        GestorEmpleados gestor = new GestorEmpleados();
+
         Direccion dir1 = new Direccion("Av. Los Alerces","123", "Puerto Montt", "Los Lagos", "Chile", "1234567");
         Empleado e1 = new Empleado("20.384.892-1","Nat", "Fox",LocalDate.of(2004, 9, 13), dir1, "NatFox@salmontt.cl",
                 "+56 9 6545 4568", "59000", "Asistente de contabilidad", "Contabilidad", 1200000, LocalDate.of(2024, 10, 11));
@@ -16,19 +21,25 @@ public class Main {
         Direccion dir3 = new Direccion("Av. Los Alerces","123", "Puerto Montt", "Los Lagos", "Chile", "1234567");
         Empleado e3 = new Empleado("20.452.467-1","Hige", "Tucanazo",LocalDate.of(1992, 8, 9), dir3, "higetucanazo@salmontt.cl",
                 "+56 9 4532 5678", "66600", "Director de RRHH", "RRHH", 1500000, LocalDate.of(2022, 4, 24));
-        System.out.println("=== INSTANCIAS CREADAS ===\n");
 
-        System.out.println(">> EMPLEADO 1 <<");
-        System.out.println(e1);
-        System.out.println("---------------------------");
+        // Para agregar empleados al gestor
+        gestor.agregarEmpleado(e1);
+        gestor.agregarEmpleado(e2);
+        gestor.agregarEmpleado(e3);
 
-        System.out.println(">> EMPLEADO 2 <<");
-        System.out.println(e2);
-        System.out.println("---------------------------");
+        // Guardar empleados en el archivo txt
+        gestor.guardarEnArchivo("empleados.txt");
 
-        System.out.println(">> EMPLEADO 3 <<");
-        System.out.println(e3);
-        System.out.println("===========================");
+        // Mostras los empleados agregados
+        System.out.println("=== EMPLEADOS CREADOS EN MEMORIA ===");
+        gestor.mostrarEmpleados();
+
+
+        // cargar los empleados desde el archivo .txt (empleados.txt)
+        gestor.cargarDesdeArchivo("empleados.txt");
+
+        System.out.println("=== EMPLEADOS DESDE ARCHIVO ===");
+        gestor.mostrarEmpleados();
 
     }
 }

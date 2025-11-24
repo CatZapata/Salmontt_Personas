@@ -69,6 +69,11 @@ public class Direccion {
     // Override para que en consola se vea mas legible lo que se imprime
     @Override
     public String toString() {
-        return calle + " " + numero + ", " + ciudad + ", " + region + ", " + pais + " (CP: " + codigoPostal + ")";
+        return (calle != null ? calle : "N/A") + " " + // Se anade null por si los espacios quedan vacios
+                (numero != null ? numero : "N/A") + ", " +
+                (ciudad != null ? ciudad : "N/A") + ", " +
+                (region != null ? region : "N/A") + ", " +
+                (pais != null ? pais : "N/A") + " (CP: " +
+                (codigoPostal != null ? codigoPostal : "N/A") + ")";
     }
 }

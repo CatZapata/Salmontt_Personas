@@ -23,6 +23,7 @@ public class Persona {
         this.email = email;
         this.telefono = telefono;
     }
+
     // Getters y Setters
     public String getRut() {
         return rut;
@@ -81,13 +82,20 @@ public class Persona {
     }
 
     public String getNombreCompleto() {
-        return nombre + " " + apellido;
+        return (nombre != null ? nombre : "") + " " + (apellido != null ? apellido : "");
     }
 
     // override para legibilidad
     @Override
     public String toString() {
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Persona { RUT: " + (rut != null ? rut : "N/A") + ", Nombre: " + (getNombreCompleto() != null ? getNombreCompleto() : "N/A") + ", Nac: " + (fechaNacimiento != null ? fechaNacimiento.format(f) : "N/A") + ", Direccion: " + (direccion != null ? direccion.toString() : "N/A") + ", Email: " + (email != null ? email : "N/A") + ", Tel: " + (telefono != null ? telefono : "N/A") + " }";
+        return "Persona { " +
+                "RUT: " + (rut != null ? rut : "N/A") +
+                ", Nombre: " + (getNombreCompleto().trim().isEmpty() ? "N/A" : getNombreCompleto()) +
+                ", Nac: " + (fechaNacimiento != null ? fechaNacimiento.format(f) : "N/A") +
+                ", Direccion: " + (direccion != null ? direccion.toString() : "N/A") +
+                ", Email: " + (email != null ? email : "N/A") +
+                ", Tel: " + (telefono != null ? telefono : "N/A") +
+                " }";
     }
 }

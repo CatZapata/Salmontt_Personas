@@ -9,7 +9,8 @@ public class Empleado extends Persona {
     private String departamento;
     private double sueldo;
     private LocalDate fechaIngreso;
-// Constructor
+
+    // Constructor
     public Empleado(String rut, String nombre, String apellido, LocalDate fechaNacimiento, Direccion direccion, String email, String telefono,
                     String idEmpleado, String cargo, String departamento, double sueldo, LocalDate fechaIngreso) {
         super(rut, nombre, apellido, fechaNacimiento, direccion, email, telefono); //super usado para llamar al constructor de la clase Persona
@@ -19,6 +20,7 @@ public class Empleado extends Persona {
         this.sueldo = sueldo;
         this.fechaIngreso = fechaIngreso;
     }
+
     // Getters y Setters
     public String getIdEmpleado() {
         return idEmpleado;
@@ -59,10 +61,16 @@ public class Empleado extends Persona {
     public void setFechaIngreso(LocalDate fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
+
     // nuevamente Override para que en consola se vea mas legible lo que se imprime
     @Override
     public String toString() {
-        return "Empleado { ID: " + idEmpleado + ", Cargo: " + cargo + ", Departamento: " + departamento + ", Sueldo: " + sueldo + ", FechaIngreso: " + (fechaIngreso != null ? fechaIngreso.toString() : "N/A") + " } - " + super.toString();
+        return "Empleado { " +
+                "ID: " + (idEmpleado != null ? idEmpleado : "N/A") +
+                ", Cargo: " + (cargo != null ? cargo : "N/A") +
+                ", Departamento: " + (departamento != null ? departamento : "N/A") +
+                ", Sueldo: " + sueldo +
+                ", FechaIngreso: " + (fechaIngreso != null ? fechaIngreso : "N/A") +
+                " } - " + super.toString();
     }
 }
-

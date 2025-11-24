@@ -41,24 +41,42 @@ public class GestorEmpleados {
     }
 
     public void mostrarEmpleados() {
+        if (empleados.isEmpty()) {
+            System.out.println("No hay empleados para mostrar.");
+            return;
+        }
+
         for (Empleado e : empleados) {
+            System.out.println("----------------------------------------");
             System.out.println(e);
-            System.out.println("---------------------------");
+            System.out.println("----------------------------------------\n");
         }
     }
 
+
     // Guarda todos los empleados actuales en el archivo .txt
     public void guardarEnArchivo(String rutaArchivo) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {  // sin true para que reemplace lo anterior
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
+
+            // Arreglando para que se vea mucho mas legible en el txt
+                //Cabecera
+            bw.write(String.format("%-8s %-15s %-15s %-30s %-12s %-15s%n",
+                    "ID", "Nombre", "Apellido", "Cargo", "Sueldo", "Ingreso"));
+            bw.write("---------------------------------------------------------------------------------------------\n");
+
+              // Filas de empleados
             for (Empleado e : empleados) {
-                bw.write(e.getIdEmpleado() + ";" +
-                        e.getNombre() + ";" +
-                        e.getApellido() + ";" +
-                        e.getCargo() + ";" +
-                        e.getSueldo() + ";" +
-                        e.getFechaIngreso() + "\n");
+                bw.write(String.format("%-8s %-15s %-15s %-30s %-12.0f %-15s%n",
+                        e.getIdEmpleado(),
+                        e.getNombre(),
+                        e.getApellido(),
+                        e.getCargo(),
+                        e.getSueldo(),
+                        e.getFechaIngreso()));
             }
-            System.out.println("Empleados guardados correctamente en " + rutaArchivo);
+
+            System.out.println("Empleados guardados correctamente en: " + rutaArchivo);
+
         } catch (IOException e) {
             System.out.println("Error al guardar empleados: " + e.getMessage());
         }

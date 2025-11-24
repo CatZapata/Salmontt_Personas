@@ -1,3 +1,5 @@
-59000;Nat;Fox;Asistente de contabilidad;1200000.0;2024-10-11
-69000;Nathaniel;Trafalgar;Diseno de Marketing;1800000.0;2023-06-11
-66600;Hige;Tucanazo;Director de RRHH;1500000.0;2022-04-24
+ID       Nombre          Apellido        Cargo                          Sueldo       Ingreso        
+---------------------------------------------------------------------------------------------
+59000    Nat             Fox             Asistente de contabilidad      1200000      2024-10-11     
+69000    Nathaniel       Trafalgar       Diseno de Marketing            1800000      2023-06-11     
+66600    Hige            Tucanazo        Director de RRHH               1500000      2022-04-24     

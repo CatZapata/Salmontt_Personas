@@ -7,7 +7,9 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("=== SISTEMA SALMONTT ===\n");
+        System.out.println("\u001B[34m========================================");
+        System.out.println("         SISTEMA SALMONTT");
+        System.out.println("========================================\u001B[0m\n");
 
         // Crear gestor que maneja la colección de empleados
         GestorEmpleados gestor = new GestorEmpleados();
@@ -34,9 +36,11 @@ public class Main {
         System.out.println("=== EMPLEADOS CREADOS EN MEMORIA ===");
         gestor.mostrarEmpleados();
 
-
         // cargar los empleados desde el archivo .txt (empleados.txt)
         gestor.cargarDesdeArchivo("empleados.txt");
+        System.out.printf("\u001B[33m===================================================\u001B[0m\n");
+        System.out.printf("\u001B[33mDatos repetidos en el archivo,\nSaltar esta parte.\u001B[0m\n");
+        System.out.printf("\u001B[33m===================================================\u001B[0m\n\n");
 
         System.out.println("=== EMPLEADOS DESDE ARCHIVO ===");
         gestor.mostrarEmpleados();

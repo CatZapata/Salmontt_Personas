@@ -65,12 +65,10 @@ public class Empleado extends Persona {
     // nuevamente Override para que en consola se vea mas legible lo que se imprime
     @Override
     public String toString() {
-        return "Empleado { " +
-                "ID: " + (idEmpleado != null ? idEmpleado : "N/A") +
-                ", Cargo: " + (cargo != null ? cargo : "N/A") +
-                ", Departamento: " + (departamento != null ? departamento : "N/A") +
-                ", Sueldo: " + sueldo +
-                ", FechaIngreso: " + (fechaIngreso != null ? fechaIngreso : "N/A") +
-                " } - " + super.toString();
+        return  "ID: " + (idEmpleado != null ? idEmpleado : "N/A") + " | Nombre: " + getNombreCompleto() + "\n" +
+                "Cargo: " + (cargo != null ? cargo : "N/A") + "\n" +
+                "Departamento: " + (departamento != null ? departamento : "N/A") + "\n" +
+                "Sueldo: $" + String.format("%,.0f", sueldo) + " | Ingreso: " +
+                (fechaIngreso != null ? fechaIngreso : "N/A");
     }
 }

@@ -22,6 +22,7 @@ El proyecto fue desarrollado a partir de un caso contextualizado, abordando prob
 📁 src/
 ├── app/         # Clase principal con el método main
 ├── model/       # Clases de dominio (Direccion, Empleado y Persona)
+├── service/     # Clases de lectura, guardado y gestion de empleados en archivos txt (GestorEmpleado)
 ````
 
 ---
@@ -47,7 +48,7 @@ git clone https://github.com/usuario/repositorio-evaluacion-final.git
 ---
 
 **Repositorio GitHub:** \https://github.com/CatZapata/Salmontt_Personas.git
-**Fecha de entrega:** \[10/11/2025]
+**Fecha de entrega:** \[24/11/2025]
 
 ---
 
